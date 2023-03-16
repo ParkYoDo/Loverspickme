@@ -6,9 +6,9 @@ import onScrollLock from 'utils/onScrollLock';
 function Loading() {
   onScrollLock();
   return (
-    <S.Background>
+    <S.BackgroundWrapper>
       <S.LoadingImage src={Spinner} alt="로딩중" />
-    </S.Background>
+    </S.BackgroundWrapper>
   );
 }
 
