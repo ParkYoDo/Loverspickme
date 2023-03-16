@@ -9,7 +9,6 @@ import { doc, getDoc } from 'firebase/firestore';
 import { SlBubble } from 'react-icons/sl';
 import { productState, commentInterface } from 'type/interface';
 import { RootState } from 'store/store';
-
 interface Props {
   product: productState;
 }

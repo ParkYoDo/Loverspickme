@@ -256,7 +256,11 @@ function ModifyUser({ setModifyUserModal }: Props) {
     }
   };
 
-  onClickOutside({ component: daumPost, componentRef: daumPostRef, setState: setDaumPost });
+  onClickOutside({
+    component: daumPost,
+    componentRef: daumPostRef,
+    setState: setDaumPost,
+  });
 
   useEffect(() => {
     document.body.style.overflow = `hidden`;

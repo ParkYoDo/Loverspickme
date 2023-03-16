@@ -7,16 +7,16 @@ const orderQueue = createSlice({
   name: 'orderQueue',
   initialState,
   reducers: {
-    addOrderQueue(state, action) {
+    addOrderQueue(_, action) {
       return [action.payload];
     },
-    addSelectOrderQueue(state, action) {
+    addSelectOrderQueue(_, action) {
       return action.payload;
     },
-    addOrderInfo(state, action) {
+    addOrderInfo(_, action) {
       return [action.payload];
     },
-    cleanOrderQueue(state, action) {
+    cleanOrderQueue() {
       return [];
     },
   },

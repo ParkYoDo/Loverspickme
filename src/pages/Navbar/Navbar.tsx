@@ -69,7 +69,7 @@ function Navbar() {
           })
         );
       } else {
-        dispatch(logoutUser(null));
+        dispatch(logoutUser());
       }
     });
   }, [dispatch]);

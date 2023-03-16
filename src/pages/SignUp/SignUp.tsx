@@ -150,7 +150,7 @@ function SignUp() {
   };
 
   const onCompletePost = (data: any) => {
-    let postcode = data.zonecode;
+    const postcode = data.zonecode;
     let fullAddress = data.address;
     let extraAddress = '';
 
@@ -168,7 +168,11 @@ function SignUp() {
     setDaumPost(false);
   };
 
-  onClickOutSide({ component: daumPost, componentRef: daumPostRef, setState: setDaumPost });
+  onClickOutSide({
+    component: daumPost,
+    componentRef: daumPostRef,
+    setState: setDaumPost,
+  });
 
   return (
     <>

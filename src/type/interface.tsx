@@ -10,7 +10,10 @@ export interface userState {
   wish?: string[];
   cart?: { item: string; count: number | { item: number; count: number }[] }[];
   order?: {
-    orderQueue: { item: string; count: number | { item: number; count: number }[] }[];
+    orderQueue: {
+      item: string;
+      count: number | { item: number; count: number }[];
+    }[];
     price: number;
     receiverPostCode: number;
     receiverAddress: string;
@@ -83,7 +86,7 @@ export interface commentInterface {
   content: string;
 }
 
-export interface inquiryInterface extends commentInterface {}
+export type inquiryInterface = commentInterface;
 
 export interface receiverInfoInterface {
   receiverName: string;

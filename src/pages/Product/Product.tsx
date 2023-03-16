@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from 'pages/Product/ProductStyle';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -9,30 +9,45 @@ import InquiryTab from 'components/InquiryTab/InquiryTab';
 import { RootState } from 'store/store';
 
 function Product() {
-  let { id } = useParams();
+  const { id } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  let tab: number = Number(searchParams.get('tab') || 0);
+  const tab = Number(searchParams.get('tab') || 0);
 
   const products = useSelector((state: RootState) => state.products);
   const product = products.find((a) => a.id === id);
+
+  const [loading, setLoading] = useState(true);
 
   const openTab = (e: React.MouseEvent<HTMLButtonElement>) => {
     searchParams.set('tab', e.currentTarget.value);
     setSearchParams(searchParams);
   };
 
+  useEffect(() => {
+    product && setLoading(false);
+  }, [product]);
+
   return (
     <>
       <BuyMenu product={product!} />
+
       {/* Main Image */}
-      {product && (
+
+      {loading ? (
         <S.MainImageWrapper>
-          <S.MainImage src={product.image} alt={product.name} />
-          <S.MainTitle>{product.name}</S.MainTitle>
-          <S.MainPrice>{product.price!.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</S.MainPrice>
+          <S.SkeletonMainImage />
+          <S.SkeletonMainTitle />
+          <S.SkeletonMainPrice />
+        </S.MainImageWrapper>
+      ) : (
+        <S.MainImageWrapper>
+          <S.MainImage src={product?.image} alt={product?.name} />
+          <S.MainTitle>{product?.name}</S.MainTitle>
+          <S.MainPrice>{product?.price!.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</S.MainPrice>
         </S.MainImageWrapper>
       )}
+
       {/* Tab */}
       <S.TabWrapper>
         <S.TabBtn active={tab === 0 ? true : false} value="0" onClick={openTab}>

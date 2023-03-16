@@ -7,7 +7,7 @@ const kakaoLoginUser = createSlice({
   name: 'kakaoLoginUser',
   initialState,
   reducers: {
-    setKakaoUserData(state, action) {
+    setKakaoUserData(_, action) {
       return action.payload;
     },
   },

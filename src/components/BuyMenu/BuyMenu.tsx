@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import * as S from 'components/BuyMenu/BuyMenuStyle';
 import { updateDoc, arrayUnion, arrayRemove, getDoc, doc } from 'firebase/firestore';
 import { db } from 'service/firebase_config';
-import { BsChevronCompactDown, BsChevronDown, BsXCircle } from 'react-icons/bs';
-import { IoHeartOutline, IoHeart } from 'react-icons/io5';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCart, addWishList, removeWishList } from 'store/user';
 import { addOrderQueue } from 'store/orderQueue';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from 'store/store';
-import { selectOptionInterface } from 'type/interface';
-import { productState } from 'type/interface';
+import { selectOptionInterface, productState } from 'type/interface';
+import { BsChevronCompactDown, BsChevronDown, BsXCircle } from 'react-icons/bs';
+import { IoHeartOutline, IoHeart } from 'react-icons/io5';
 
 interface Props {
   product: productState;
@@ -113,7 +112,10 @@ function BuyMenu({ product }: Props) {
       // 접속한 유저의 카트 객체 받아오기
       const userRef = doc(db, 'users', user.uid!);
       const res = await getDoc(userRef);
-      const cartItem: { item: string; count: number | { item: number; count: number }[] }[] = res.data()?.cart;
+      const cartItem: {
+        item: string;
+        count: number | { item: number; count: number }[];
+      }[] = res.data()?.cart;
 
       // 카트 객체 내부에 해당 프로덕트가 있는지 확인
       const findItem = cartItem?.find((a) => a.item === product.id);
@@ -135,53 +137,51 @@ function BuyMenu({ product }: Props) {
         } else {
           // 카트에 없으면 수량을 담는다
           await updateDoc(userRef, {
-            cart: arrayUnion({ item: product.id, count: count }),
+            cart: arrayUnion({ item: product.id, count }),
           });
-          dispatch(addCart({ findItem, data: { item: product.id, count: count } }));
+          dispatch(addCart({ findItem, data: { item: product.id, count } }));
           setShowOption(false);
           setMoveModal(true);
         }
       }
       // 프로덕트에 옵션이 있으면
-      else {
-        if (selectOption.length) {
-          if (findItem) {
-            const mergeArray = (findItem.count as { item: number; count: number }[]).concat(selectOption);
-            const sum: { [key: string]: { item: number; count: number } } = {};
+      else if (selectOption.length) {
+        if (findItem) {
+          const mergeArray = (findItem.count as { item: number; count: number }[]).concat(selectOption);
+          const sum: { [key: string]: { item: number; count: number } } = {};
 
-            mergeArray.forEach((a) => {
-              if (sum[a.item]) {
-                sum[a.item].count = sum[a.item].count + a.count;
-              } else {
-                sum[a.item] = a;
-              }
-            });
+          mergeArray.forEach((a) => {
+            if (sum[a.item]) {
+              sum[a.item].count = sum[a.item].count + a.count;
+            } else {
+              sum[a.item] = a;
+            }
+          });
 
-            const summary = Object.values(sum);
+          const summary = Object.values(sum);
 
-            const newUserCart = cartItem.map((a) => (a.item === product.id ? { ...a, count: summary } : { ...a }));
-            await updateDoc(userRef, {
-              cart: newUserCart,
-            });
-            dispatch(addCart({ findItem, data: newUserCart }));
-            setShowOption(false);
-            setMoveModal(true);
-          } else {
-            await updateDoc(userRef, {
-              cart: arrayUnion({ item: product.id, count: selectOption }),
-            });
-            dispatch(
-              addCart({
-                findItem,
-                data: { item: product.id, count: selectOption },
-              })
-            );
-            setShowOption(false);
-            setMoveModal(true);
-          }
+          const newUserCart = cartItem.map((a) => (a.item === product.id ? { ...a, count: summary } : { ...a }));
+          await updateDoc(userRef, {
+            cart: newUserCart,
+          });
+          dispatch(addCart({ findItem, data: newUserCart }));
+          setShowOption(false);
+          setMoveModal(true);
         } else {
-          alert('옵션을 선택하세요');
+          await updateDoc(userRef, {
+            cart: arrayUnion({ item: product.id, count: selectOption }),
+          });
+          dispatch(
+            addCart({
+              findItem,
+              data: { item: product.id, count: selectOption },
+            })
+          );
+          setShowOption(false);
+          setMoveModal(true);
         }
+      } else {
+        alert('옵션을 선택하세요');
       }
     } else moveLoginPage();
   };
@@ -246,19 +246,17 @@ function BuyMenu({ product }: Props) {
   return (
     <>
       {moveModal && (
-        <>
-          <S.BackGroundWrapper moveModal={moveModal}>
-            <S.MovePageModal>
-              <S.MovePageTitleDiv>
-                <S.MovePageTitle>선택하신 상품을 장바구니에 담았습니다</S.MovePageTitle>
-              </S.MovePageTitleDiv>
-              <S.MovePageBtnDiv>
-                <S.MovePageBtn onClick={stayPage}>계속쇼핑</S.MovePageBtn>
-                <S.MovePageBtn onClick={moveCartPage}>장바구니</S.MovePageBtn>
-              </S.MovePageBtnDiv>
-            </S.MovePageModal>
-          </S.BackGroundWrapper>
-        </>
+        <S.BackGroundWrapper moveModal={moveModal}>
+          <S.MovePageModal>
+            <S.MovePageTitleDiv>
+              <S.MovePageTitle>선택하신 상품을 장바구니에 담았습니다</S.MovePageTitle>
+            </S.MovePageTitleDiv>
+            <S.MovePageBtnDiv>
+              <S.MovePageBtn onClick={stayPage}>계속쇼핑</S.MovePageBtn>
+              <S.MovePageBtn onClick={moveCartPage}>장바구니</S.MovePageBtn>
+            </S.MovePageBtnDiv>
+          </S.MovePageModal>
+        </S.BackGroundWrapper>
       )}
 
       {buyModal ? (
@@ -377,7 +375,7 @@ function BuyMenu({ product }: Props) {
           <S.BuyBtn>장바구니</S.BuyBtn>
           <S.BuyBtn>구매하기</S.BuyBtn>
           <S.HeartBtnDiv>
-            <S.HeartBtn>{user?.wish?.find((a) => a === product.id) ? <IoHeart /> : <IoHeartOutline />}</S.HeartBtn>
+            <S.HeartBtn>{user?.wish?.find((a) => a === product?.id) ? <IoHeart /> : <IoHeartOutline />}</S.HeartBtn>
           </S.HeartBtnDiv>
         </S.BuyMenuWrapper>
       )}

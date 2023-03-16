@@ -183,7 +183,11 @@ function KakaoSignUp() {
     setDaumPost(false);
   };
 
-  onClickOutSide({ component: daumPost, componentRef: daumPostRef, setState: setDaumPost });
+  onClickOutSide({
+    component: daumPost,
+    componentRef: daumPostRef,
+    setState: setDaumPost,
+  });
 
   const setKakaoUserData = useCallback(() => {
     setKakaoimage(kakaoUser.image!);
