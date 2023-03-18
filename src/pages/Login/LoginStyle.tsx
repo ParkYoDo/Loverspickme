@@ -11,11 +11,14 @@ export const LoginWrapper = styled.div`
 	@media screen and (min-width: 1024px) {
 		margin-top: 80px;
 		width: 900px;
+		height: 400px;
 		flex-direction: row;
 		gap: 24px;
 		background-color: white;
 		padding: 8px 12px;
 		border-radius: 12px;
+		display: flex;
+		align-items: center;
 	}
 `;
 
@@ -92,8 +95,7 @@ export const LoginImage = styled.img`
 	margin: 30px 0;
 	@media screen and (min-width: 1024px) {
 		width: 50%;
-		height: 440px;
-		margin: 0;
+		height: 250px;
 	}
 `;
 
@@ -103,7 +105,7 @@ export const LoginForm = styled.form`
 	align-items: center;
 	@media screen and (min-width: 1024px) {
 		width: 50%;
-		justify-content: center;
+		height: 250px;
 	}
 `;
 
