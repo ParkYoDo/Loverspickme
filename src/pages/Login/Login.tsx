@@ -107,11 +107,29 @@ function Login() {
     const userData = await getUserData(accessToken);
 
     await signInWithEmailAndPassword(auth, userData.data.kakao_account.email, userData.data.id)
-      .then(() => {
+      .then(async(res) => {
+        const userRef = doc(db, 'users', res.user.uid);
+        const user = await getDoc(userRef);
+        dispatch(
+          loginUser({
+            uid: res.user.uid,
+            name: user.data()?.name,
+            email: res.user?.email,
+            phone: user.data()?.phone,
+            image: user.data()?.image,
+            cart: user.data()?.cart,
+            wish: user.data()?.wish,
+            postcode: user.data()?.postcode,
+            address: user.data()?.address,
+            detailaddress: user.data()?.detailaddress,
+            order: user.data()?.order,
+          })
+        );
         setLoading(false);
         navigate('/');
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         dispatch(
           setKakaoUserData({
             uid: userData.data.id,
