@@ -4,11 +4,9 @@ import SideMenu from 'components/SideMenu/SideMenu';
 import SearchMenu from 'components/SearchProduct/SearchProduct';
 import ModifyUser from 'components/ModifyUser/ModifyUser';
 import logoImage from 'image/Navbar/logo_img.jpeg';
-import { auth, db } from 'service/firebase_config';
-import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc, getDocs, collection } from 'firebase/firestore';
+import { db } from 'service/firebase_config';
+import {  getDocs, collection } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, logoutUser } from 'store/user';
 import { loadProduct } from 'store/products';
 import { RootState } from 'store/store';
 
@@ -44,35 +42,6 @@ function Navbar() {
   useEffect(() => {
     getProductData();
   }, [getProductData]);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentUser) => {
-      if (currentUser) {
-        //사용자 로그인 시
-
-        const userRef = doc(db, 'users', currentUser.uid);
-        const user = await getDoc(userRef);
-
-        dispatch(
-          loginUser({
-            uid: currentUser.uid,
-            name: user.data()?.name,
-            email: currentUser?.email,
-            phone: user.data()?.phone,
-            image: user.data()?.image,
-            cart: user.data()?.cart,
-            wish: user.data()?.wish,
-            postcode: user.data()?.postcode,
-            address: user.data()?.address,
-            detailaddress: user.data()?.detailaddress,
-            order: user.data()?.order,
-          })
-        );
-      } else {
-        dispatch(logoutUser());
-      }
-    });
-  }, [dispatch]);
 
   return (
     <>

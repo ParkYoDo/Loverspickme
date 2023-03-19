@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as S from 'components/SideMenu/SideMenuStyle';
 import { auth } from 'service/firebase_config';
 import { signOut } from 'firebase/auth';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { TfiClose } from 'react-icons/tfi';
 import { IoEllipsisVerticalOutline } from 'react-icons/io5';
 import { RootState } from 'store/store';
+import { logoutUser } from 'store/user';
 
 interface Props {
   setSideMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,6 +16,7 @@ interface Props {
 
 function SideMenu({ setSideMenu, openModifyUserModal }: Props) {
   const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [functionModal, setFunctionModal] = useState(false);
@@ -76,6 +78,7 @@ function SideMenu({ setSideMenu, openModifyUserModal }: Props) {
 
   const onSignOut = async () => {
     await signOut(auth);
+    dispatch(logoutUser());
   };
 
   useEffect(() => {
