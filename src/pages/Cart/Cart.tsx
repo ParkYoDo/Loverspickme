@@ -25,7 +25,7 @@ function Cart() {
   let totalPrice: number = 0;
   let totalCount: number = 0;
 
-  const [checkList, setCheckList] = useState<string[]>(user.cart!.map((a) => a.item));
+  const [checkList, setCheckList] = useState<string[]>(user.cart?user.cart.map((a) => a.item):[]);
 
   const onCheckAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckList(e.currentTarget.checked ? user.cart!.map((a) => a.item) : []);
@@ -113,7 +113,7 @@ function Cart() {
 
   return (
     <>
-      {user?.cart![0] ? (
+      {user.cart&&user.cart[0] ? (
         <S.LayOutWrapper>
           <S.LayoutLeftDiv>
             <S.CheckBoxWrapper>
@@ -121,7 +121,7 @@ function Cart() {
                 <S.CheckBox
                   type="checkbox"
                   id="checkbox"
-                  checked={checkList.length === 0 ? false : checkList.length === user.cart.length ? true : false}
+                  checked={checkList.length === 0 ? false : checkList.length === user.cart!.length ? true : false}
                   onChange={onCheckAll}
                 />
                 <S.CheckBoxLabel htmlFor="checkbox">전체선택</S.CheckBoxLabel>
@@ -129,7 +129,7 @@ function Cart() {
               <S.CheckBoxDeleteBtn onClick={DeleteSelectProduct}>선택상품 삭제</S.CheckBoxDeleteBtn>
             </S.CheckBoxWrapper>
 
-            {user.cart.map((cart) => {
+            {user.cart!.map((cart) => {
               const product = totalProducts.find((a) => a.id === cart.item);
               const itemInCheckList = checkList.includes(cart.item) ? true : 0;
 

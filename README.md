@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+<div align="center">
+    <img width="450" src="https://user-images.githubusercontent.com/31908501/226259360-f2038a8a-bc4b-49bb-9c32-5989cae13250.jpeg"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    ## LOVERSPICKME
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+## 🕐 Develop period
 
-### `npm start`
+    2023.01.19 ~ 2023.03.10
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠 Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<div align="center">
+<table>
+<tr>
+ <td align="center">Language</td>
+ <td>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=ffffff"/>
+ </td>
+</tr>
+<tr>
+ <td align="center">Library</td>
+ <td>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=Storybook&logoColor=ffffff"/>
+  <br>
+  <img src="https://img.shields.io/badge/Axios-6028e0?style=for-the-badge&logo=Axios&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/CKEditor5-0287D0?style=for-the-badge&logo=CKEditor4&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/EmailJS-2D963D?style=for-the-badge&logo=EmailJS&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/DaumPostCode-FFF000?style=for-the-badge&logo=DaumPostCode&logoColor=ffffff"/>
+  </td>
+</tr>
+<tr>
+ <td align="center">State Management</td>
+ <td>
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=ffffff"/>
+ </td>
+</tr>
+<tr>
+ <td align="center">Database</td>
+ <td>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=ffffff"/>
+ </td>
+</tr>
+<tr>
+ <td align="center">Package</td>
+ <td>
+    <img src="https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=Npm&logoColor=white"/>
+  </td>
+</tr>
+<tr>
+ <td align="center">Bundler</td>
+ <td>
+    <img src="https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=Webpack&logoColor=white"/>
+  </td>
+</tr>
+<tr>
+ <td align="center">Formatter</td>
+ <td>
+  <img src="https://img.shields.io/badge/Prettier-373338?style=for-the-badge&logo=Prettier&logoColor=ffffff"/>&nbsp 
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=ffffff"/>
+ </td>
+</tr>
+<tr>
+ <td align="center">Tools</td>
+ <td>
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+ </td>
+</tr>
+<tr>
+ <td align="center">IDE</td>
+ <td>
+    <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white"/>
+</tr>
+</table>
+</div>
+<br>
 
-### `npm test`
+## ⭐Feature
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1️. Home
 
-### `npm run build`
+![Home](https://user-images.githubusercontent.com/31908501/226264950-29ddf767-3110-467e-886a-e2ab1900c561.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 처음 접속했을 때 보여지는 화면
+- 항목 클릭 시 버튼에 해당 색이 그라데이션되어 보여지는 효과 구현
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. SignUp
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![SignUp](https://user-images.githubusercontent.com/31908501/226267100-09959af5-927d-4581-a207-ffc62786529d.gif)
 
-### `npm run eject`
+- 처음 접속했을 때 보여지는 화면
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Login
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Login](https://user-images.githubusercontent.com/31908501/226267490-e03ea1ad-b5df-40fb-9ce4-d4e25131a0e8.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 처음 접속했을 때 보여지는 화면
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 4. Kakao Login
 
-## Learn More
+![Kakao Login](https://user-images.githubusercontent.com/31908501/226267836-b1c00e4b-6bde-48ce-acae-e210142b5c37.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 처음 접속했을 때 보여지는 화면
