@@ -110,3 +110,9 @@
 ![Logout](https://user-images.githubusercontent.com/31908501/226335451-d59ef66f-3da3-4fe4-a968-30e958152411.gif)
 
 - 처음 접속했을 때 보여지는 화면
+
+### 6. Modify User
+
+![Modify User](https://user-images.githubusercontent.com/31908501/226340690-402a8091-cb74-4db7-969f-515f74f8dd4b.gif)
+
+- 처음 접속했을 때 보여지는 화면
