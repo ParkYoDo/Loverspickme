@@ -200,6 +200,7 @@ function ModifyUser({ setModifyUserModal }: Props) {
           // 상세주소 입력
           setErrorCode({ detailAddressErr: '상세 주소를 입력하세요' });
         } else {
+          
           setLoading(true);
           const userRef = doc(db, 'users', user.uid!);
           let success = true;
@@ -215,8 +216,8 @@ function ModifyUser({ setModifyUserModal }: Props) {
               await updateDoc(userRef, { image: url });
               dispatch(updateUser({ image: url }));
             }
-          } else if (
-            // 이름 휴대폰 주소 상세주소
+          }
+          if (
             name !== user.name ||
             phone !== user.phone ||
             address !== user.address ||
@@ -230,10 +231,12 @@ function ModifyUser({ setModifyUserModal }: Props) {
               detailaddress,
             });
             dispatch(updateUser({ name, phone, postcode, address, detailaddress }));
-          } else if (password && password !== currentPassword) {
+          }
+          if (password && password !== currentPassword) {
             // 비밀번호
             await updatePassword(auth.currentUser!, password);
-          } else if (email !== user.email) {
+          }
+          if (email !== user.email) {
             //이메일
             await updateEmail(auth.currentUser!, email)
               .then(() => {

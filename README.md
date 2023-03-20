@@ -104,3 +104,9 @@
 ![Kakao Login](https://user-images.githubusercontent.com/31908501/226267836-b1c00e4b-6bde-48ce-acae-e210142b5c37.gif)
 
 - 처음 접속했을 때 보여지는 화면
+
+### 5. Logout
+
+![Logout](https://user-images.githubusercontent.com/31908501/226335451-d59ef66f-3da3-4fe4-a968-30e958152411.gif)
+
+- 처음 접속했을 때 보여지는 화면
