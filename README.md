@@ -1,7 +1,7 @@
 <div align="center">
     <img width="450" src="https://user-images.githubusercontent.com/31908501/226259360-f2038a8a-bc4b-49bb-9c32-5989cae13250.jpeg"/>
 </div>
-<h3 align="center">LoversPickMe is shopping mall web using firebase</h3>
+<h3 align="center">Loverspickme is a shopping mall that sells stationery and more things !</h3>
 <h3 align="center">https://loverspickme.netlify.app</h3>
 
 ## 🕐 Develop period
