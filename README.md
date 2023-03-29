@@ -83,7 +83,6 @@
 
 <img width="100%" src="https://user-images.githubusercontent.com/31908501/226264950-29ddf767-3110-467e-886a-e2ab1900c561.gif"/>
 
-- 항목 클릭 시 버튼에 해당 색이 그라데이션되어 보여지는 효과 구현
 - 최초 접속 시 보이는 화면
 - Skeleton UI를 이용한 상품 로딩 관리
 
